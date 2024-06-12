@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app/bindings/initial_binding.dart';
 import 'app/routes/app_pages.dart';
@@ -28,17 +29,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         brightness: Brightness.dark,
-        // primaryColor: AppColors.colorPrimary,
-       /* textTheme: const TextTheme(
-          labelLarge: TextStyle(
-            //color: Colors.white,
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),*/
-        fontFamily: 'Roboto',
+        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         /* dark theme settings */

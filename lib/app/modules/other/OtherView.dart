@@ -17,7 +17,9 @@ class OtherView extends BaseView<OtherViewModel> {
   @override
   Widget body(BuildContext context) {
     return const Scaffold(
-      body: Column(),
+      body: Column(
+        children: [Center(child: Text("Other"))],
+      ),
     );
   }
 }
