@@ -85,7 +85,7 @@ abstract class BaseView<Controller extends BaseController>
   }
 
   Color pageBackgroundColor() {
-    return Colors.white;
+    return Colors.black;
   }
 
   Color statusBarColor() {

@@ -5,7 +5,7 @@ import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
 
 import '../../core/BaseController.dart';
 
-class HomeViewModel extends BaseController {
+class OtherViewModel extends BaseController {
   final UserRepository _repository = Get.find(tag: (UserRepository).toString());
 
   RxList<UsersModel> schools = RxList.empty();
@@ -14,11 +14,4 @@ class HomeViewModel extends BaseController {
     schools.value = await _repository.getUser();
   }
 
-  onRefreshPage() {
-    getSchoolList();
-  }
-
-  onLoadNextPage() {
-    getSchoolList();
-  }
 }

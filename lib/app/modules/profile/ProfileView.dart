@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sportcommunityapp/util/AppStrings.dart';
-
 import '../../core/BaseView.dart';
-import 'HomeViewModel.dart';
+import 'ProfileViewModel.dart';
 
-class HomeView extends BaseView<HomeViewModel> {
+class ProfileView extends BaseView<ProfileViewModel> {
+  ProfileView() {
+    controller.getUser();
+  }
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {

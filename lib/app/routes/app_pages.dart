@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:sportcommunityapp/app/modules/main/MainBinding.dart';
+import 'package:sportcommunityapp/app/modules/main/MainView.dart';
 import 'package:sportcommunityapp/app/modules/welcome/WelcomeBinding.dart';
 
 import '../modules/home/HomeBinding.dart';
@@ -19,12 +21,17 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
+      name: _Paths.MAIN,
+      page: () => MainView(),
+      binding: MainBinding(),
+    ),
+    GetPage(
       name: _Paths.WELCOME,
       page: () => WelcomeView(),
       binding: WelcomeBinding(),
     ),
     GetPage(
-      name: _Paths.STUDENTS,
+      name: _Paths.PROFILE,
       page: () => HomeView(),
       binding: HomeBinding(),
     ),

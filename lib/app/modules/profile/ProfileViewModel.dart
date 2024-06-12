@@ -5,20 +5,14 @@ import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
 
 import '../../core/BaseController.dart';
 
-class HomeViewModel extends BaseController {
+class ProfileViewModel extends BaseController {
   final UserRepository _repository = Get.find(tag: (UserRepository).toString());
 
-  RxList<UsersModel> schools = RxList.empty();
+  var user = UsersModel.empty().obs;
+
   var currentIndex = 0.obs;
-  Future<void> getSchoolList() async {
-    schools.value = await _repository.getUser();
-  }
 
-  onRefreshPage() {
-    getSchoolList();
-  }
-
-  onLoadNextPage() {
-    getSchoolList();
+  Future<void> getUser() async {
+    user.value = await _repository.getUserbyId(1);
   }
 }

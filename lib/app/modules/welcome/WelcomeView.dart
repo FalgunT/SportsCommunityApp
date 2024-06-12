@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sportcommunityapp/app/modules/welcome/WelcomeViewModel.dart';
 import 'package:sportcommunityapp/app/theme/ProjectTheme.dart';
 import '../../core/BaseView.dart';
+import '../../routes/app_pages.dart';
 
 class WelcomeView extends BaseView<WelcomeViewModel> {
   WelcomeView() {
@@ -105,7 +107,9 @@ class WelcomeView extends BaseView<WelcomeViewModel> {
                             padding:
                                 const EdgeInsets.only(left: 20.0, right: 20),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.offAndToNamed(Routes.MAIN);
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: ProjectTheme.primaryColor,

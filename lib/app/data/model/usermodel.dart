@@ -7,7 +7,7 @@ class UsersModel {
   late String Gender;
   late String Address;
   late String ContactNo;
-
+  UsersModel.empty();
   UsersModel(
       {required this.id,
       required this.Name,

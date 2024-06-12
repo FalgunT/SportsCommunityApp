@@ -8,13 +8,20 @@ class UserRepository {
 
   Future<List<UsersModel>> getUser() async {
     var dbClient = await dbHelper.db;
-    List<Map> maps =
-        await dbClient.query(dbScript.UserTable);
+    List<Map> maps = await dbClient.query(dbScript.UserTable);
     List<UsersModel> student = [];
     for (int i = 0; i < maps.length; i++) {
       student.add(UsersModel.fromMap(maps[i]));
     }
     return student;
+  }
+
+  Future<UsersModel> getUserbyId(int id) async {
+    var dbClient = await dbHelper.db;
+    List<Map> maps = await dbClient
+        .query(dbScript.UserTable, where: "id = ?", whereArgs: [id]);
+    UsersModel user = UsersModel.fromMap(maps[0]);
+    return user;
   }
 
   Future<int> add(UsersModel studentModel) async {

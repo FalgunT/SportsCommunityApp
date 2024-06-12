@@ -5,7 +5,7 @@ import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
 
 import '../../core/BaseController.dart';
 
-class HomeViewModel extends BaseController {
+class InboxViewModel extends BaseController {
   final UserRepository _repository = Get.find(tag: (UserRepository).toString());
 
   RxList<UsersModel> schools = RxList.empty();
