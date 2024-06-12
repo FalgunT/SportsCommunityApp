@@ -50,7 +50,7 @@ class WelcomeView extends BaseView<WelcomeViewModel> {
                   //   color: Colors.amber,
                   height: 25,
                   width: 100,
-                  child: Column(
+                  /*child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       //  color: Colors.green,
                       //width: size.width * 0.5,
@@ -108,7 +108,7 @@ class WelcomeView extends BaseView<WelcomeViewModel> {
                             ),
                           ),
                         )
-                      ]),
+                      ])*/
                 ),
               ),
             ),
