@@ -1,12 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sportcommunityapp/app/modules/welcome/WelcomeViewModel.dart';
-import 'package:sportcommunityapp/app/theme/ProjectTheme.dart';
-
 import '../../core/BaseView.dart';
-import '../../core/paging_view.dart';
-import '../home/Listitem.dart';
 
 class WelcomeView extends BaseView<WelcomeViewModel> {
   WelcomeView() {
@@ -15,9 +10,10 @@ class WelcomeView extends BaseView<WelcomeViewModel> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return AppBar(
+  /*  return AppBar(
       title: Text('Welcome'),
-    );
+    );*/
+    return null;
   }
 
   @override
