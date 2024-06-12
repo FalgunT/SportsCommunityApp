@@ -71,6 +71,14 @@ class dbScript {
         "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 1,5,true,-1);");
     db.execute(
         "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 1,6,true,1);");
+    db.execute(
+        "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 9,1,true,-1);");
+    db.execute(
+        "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 8,1,true,-1);");
+    db.execute(
+        "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 7,1,true,-1);");
+    db.execute(
+        "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 10,1,true,-1);");
 
     //creation of indexes
     //insert defaults

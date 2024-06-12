@@ -56,8 +56,8 @@ class MainView extends BaseView<MainViewModel> {
                 label: home,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.mail),
-                label: other,
+                icon: Icon(Icons.people_rounded),
+                label: friends,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.mail),
