@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:sportcommunityapp/app/data/model/eventmodel.dart';
+import 'package:sportcommunityapp/app/data/model/usermodel.dart';
 import 'package:sportcommunityapp/app/theme/ProjectTheme.dart';
 import 'package:sportcommunityapp/util/AppStrings.dart';
 
@@ -38,60 +40,30 @@ class HomeView extends BaseView<HomeViewModel> {
               SizedBox(
                 height: 8,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  pendinginvite,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              Obx(() => controller.pendingfriends.value.length <= 0
-                  ? CarouselSlider(
-                      options: CarouselOptions(height: 100.0),
-                      items: [1, 2, 3, 4, 5].map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Card.filled(
-                              elevation: 4,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    // margin: EdgeInsets.symmetric(horizontal: 5.0),
-
-                                    child: Text(
-                                      'text $i',
-                                      style: TextStyle(fontSize: 16.0),
-                                    )),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+              Obx(() => controller.pendingfriends.value.length > 0
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        pendinginvite,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     )
+                  : Center()),
+              Obx(() => controller.pendingfriends.value.length <= 0
+                  ? Center()
                   : CarouselSlider(
-                      options: CarouselOptions(height: 100.0),
-                      items: controller.pendingfriends.value.map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Card.filled(
-                              elevation: 4,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    // margin: EdgeInsets.symmetric(horizontal: 5.0),
-
-                                    child: Text(
-                                      ' ${i.UserID}',
-                                      style: TextStyle(fontSize: 16.0),
-                                    )),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+                      options: CarouselOptions(height: 80.0),
+                      items: getpendingWidget(),
                     )),
+              Obx(() => controller.upcomingEvents.value.length > 0
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        upcomingevent,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    )
+                  : Center()),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -99,29 +71,15 @@ class HomeView extends BaseView<HomeViewModel> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
-              CarouselSlider(
-                options: CarouselOptions(height: 200.0),
-                items: [1, 2, 3, 4, 5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Card.filled(
-                        elevation: 4,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              // margin: EdgeInsets.symmetric(horizontal: 5.0),
-
-                              child: Text(
-                                'text $i',
-                                style: TextStyle(fontSize: 16.0),
-                              )),
-                        ),
-                      );
-                    },
-                  );
-                }).toList(),
-              )
+              Obx(() => controller.upcomingEvents.value.length > 0
+                  ? CarouselSlider(
+                      options: CarouselOptions(height: 360.0),
+                      items: getEventView(),
+                    )
+                  : CarouselSlider(
+                      options: CarouselOptions(height: 360.0),
+                      items: getDummyEventView(),
+                    ))
             ],
           ),
         ),
@@ -147,5 +105,196 @@ class HomeView extends BaseView<HomeViewModel> {
               //replace eventview here...
               Get.toNamed(Routes.EVENT);
             }));
+  }
+
+  List<Widget> getpendingWidget() {
+    List<Widget> widgets = [];
+    for (int i = 0; i < controller.pendingUfriends.value.length; i++) {
+      UsersModel model = controller.pendingUfriends.value[i];
+      widgets.add(Builder(
+        builder: (BuildContext context) {
+          return Card.filled(
+            elevation: 4,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                getUserImage(i, model),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        ' ${model.Name}',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Text(
+                        ' ${model.Age} years old ' /* \u2B24  ${model.Gender}*/,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(
+                      Icons.cancel_rounded,
+                      size: 36,
+                    ),
+                    onPressed: () {
+                      controller.savePendingFriends(i, 0);
+                    },
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(
+                      Icons.check_circle_rounded,
+                      size: 36,
+                    ),
+                    onPressed: () {
+                      controller.savePendingFriends(i, 1);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ));
+    }
+
+    return widgets;
+  }
+
+  getUserImage(int i, UsersModel model) {
+    if (model.Gender == "M") {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Image.asset(
+          'assets/images/boy${(i % 3) + 1}.jpg',
+          height: 72,
+          width: 72,
+        ),
+      );
+    } else {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Image.asset(
+          'assets/images/girl${(i % 3) + 1}.jpg',
+          height: 72,
+          width: 72,
+        ),
+      );
+    }
+  }
+
+  List<Widget> getDummyEventView() {
+    return [1, 2, 3, 4, 5].map((i) {
+      return Builder(
+        builder: (BuildContext context) {
+          return Card.filled(
+            elevation: 4,
+            child: Stack(
+
+                // margin: EdgeInsets.symmetric(horizontal: 5.0),
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/event${(i % 3) + 1}.jpg',
+                      height: 352,
+                      width: 352,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: 100,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        height: 200,
+                        width: 100,
+                        color: Color(0xAF000000),
+                        child: Text('Position: $i'),
+                      ))
+                ]),
+          );
+        },
+      );
+    }).toList();
+  }
+
+  List<Widget> getEventView() {
+    List<Widget> widgets = [];
+    for (int i = 0; i < controller.upcomingEvents.value.length; i++) {
+      EventModel model = controller.upcomingEvents.value[i];
+      widgets.add(Builder(
+        builder: (BuildContext context) {
+          return Card.filled(
+            elevation: 4,
+            child: Stack(
+
+                // margin: EdgeInsets.symmetric(horizontal: 5.0),
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/event${(i % 3) + 1}.jpg',
+                      height: 352,
+                      width: 352,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: 100,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        height: 200,
+                        width: 100,
+                       // color: Colors.black54,
+                        color: Color(0xAF000000),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Name: ${model.EventName}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                            Text(
+                              'Time: ${model.EventTime}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                            Text(
+                              'Address: ${model.EventAddress}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ))
+                ]),
+          );
+        },
+      ));
+    }
+    return widgets;
   }
 }
