@@ -33,6 +33,7 @@ class HomeView extends BaseView<HomeViewModel> {
                   padding: EdgeInsets.all(8.0),
                   child: Icon(Icons.search_rounded),
                 ),
+                hintText: 'Search events',
                 onTap: () {
                   //Go to the next screen
                 },
@@ -42,10 +43,10 @@ class HomeView extends BaseView<HomeViewModel> {
               ),
               Obx(() => controller.pendingfriends.value.length > 0
                   ? Padding(
-                      padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                       child: Text(
                         pendinginvite,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     )
                   : Center()),
@@ -57,18 +58,18 @@ class HomeView extends BaseView<HomeViewModel> {
                     )),
               Obx(() => controller.upcomingEvents.value.length > 0
                   ? Padding(
-                      padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                       child: Text(
                         upcomingevent,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     )
                   : Center()),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                 child: Text(
                   upcomingevent,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
               Obx(() => controller.upcomingEvents.value.length > 0
