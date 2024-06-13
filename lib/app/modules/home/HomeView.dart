@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:intl/intl.dart';
 import 'package:sportcommunityapp/app/data/model/eventmodel.dart';
 import 'package:sportcommunityapp/app/data/model/usermodel.dart';
 import 'package:sportcommunityapp/app/theme/ProjectTheme.dart';
@@ -22,66 +23,68 @@ class HomeView extends BaseView<HomeViewModel> {
   @override
   Widget body(BuildContext context) {
     return Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SearchBar(
-                //padding: EdgeInsetsGeometry.lerp(a, b, t)
-                leading: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.search_rounded),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SearchBar(
+                  //padding: EdgeInsetsGeometry.lerp(a, b, t)
+                  leading: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(Icons.search_rounded),
+                  ),
+                  hintText: 'Search events',
+                  onTap: () {
+                    //Go to the next screen
+                  },
                 ),
-                hintText: 'Search events',
-                onTap: () {
-                  //Go to the next screen
-                },
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Obx(() => controller.pendingfriends.value.length > 0
-                  ? Padding(
-                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                      child: Text(
-                        pendinginvite,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    )
-                  : Center()),
-              Obx(() => controller.pendingfriends.value.length <= 0
-                  ? Center()
-                  : CarouselSlider(
-                      options: CarouselOptions(height: 80.0),
-                      items: getpendingWidget(),
-                    )),
-              Obx(() => controller.upcomingEvents.value.length > 0
-                  ? Padding(
-                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                      child: Text(
-                        upcomingevent,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    )
-                  : Center()),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                child: Text(
-                  upcomingevent,
-                  style: Theme.of(context).textTheme.titleMedium,
+                SizedBox(
+                  height: 8,
                 ),
-              ),
-              Obx(() => controller.upcomingEvents.value.length > 0
-                  ? CarouselSlider(
-                      options: CarouselOptions(height: 360.0),
-                      items: getEventView(),
-                    )
-                  : CarouselSlider(
-                      options: CarouselOptions(height: 360.0),
-                      items: getDummyEventView(),
-                    ))
-            ],
+                Obx(() => controller.pendingfriends.value.length > 0
+                    ? Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+                        child: Text(
+                          pendinginvite,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      )
+                    : Center()),
+                Obx(() => controller.pendingfriends.value.length <= 0
+                    ? Center()
+                    : CarouselSlider(
+                        options: CarouselOptions(height: 80.0),
+                        items: getpendingWidget(),
+                      )),
+                Obx(() => controller.upcomingEvents.value.length > 0
+                    ? Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+                        child: Text(
+                          upcomingevent,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      )
+                    : Center()),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+                  child: Text(
+                    upcomingevent,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                Obx(() => controller.upcomingEvents.value.length > 0
+                    ? CarouselSlider(
+                        options: CarouselOptions(height: 360.0),
+                        items: getEventView(),
+                      )
+                    : CarouselSlider(
+                        options: CarouselOptions(height: 360.0),
+                        items: getDummyEventView(),
+                      ))
+              ],
+            ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -125,6 +128,8 @@ class HomeView extends BaseView<HomeViewModel> {
                   flex: 2,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         ' ${model.Name}',
@@ -263,31 +268,47 @@ class HomeView extends BaseView<HomeViewModel> {
                         padding: EdgeInsets.all(8),
                         height: 200,
                         width: 100,
-                       // color: Colors.black54,
+                        // color: Colors.black54,
                         color: Color(0xAF000000),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Name: ${model.EventName}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(color: Colors.white),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.calendar_month,
+                                  size: 12,
+                                ),
+                                Text(
+                                  '${DateFormat(' MMM dd : ').add_jm().format(DateTime.fromMillisecondsSinceEpoch(model.EventTime))}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall
+                                      ?.copyWith(
+                                          color: Colors.white, fontSize: 12),
+                                ),
+                              ],
                             ),
                             Text(
-                              'Time: ${model.EventTime}',
+                              '${model.EventName}',
                               style: Theme.of(context)
                                   .textTheme
-                                  .titleSmall
-                                  ?.copyWith(color: Colors.white),
+                                  .titleLarge
+                                  ?.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
                             ),
-                            Text(
-                              'Address: ${model.EventAddress}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(color: Colors.white),
-                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  '${model.EventAddress}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(color: Colors.white),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ))

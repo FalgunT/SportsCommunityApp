@@ -29,11 +29,9 @@ class EventRepository {
     return student;
   }
 
-
-
-  Future<int> add(EventModel studentModel) async {
+  Future<int> add(EventModel event) async {
     var dbClient = await dbHelper.db;
-    return await dbClient.insert(dbScript.EventsTable, studentModel.toMap());
+    return await dbClient.insert(dbScript.EventsTable, event.toMap());
   }
 
   Future<int> update(EventModel studentModel) async {

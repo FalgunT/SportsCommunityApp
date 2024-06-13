@@ -1,6 +1,6 @@
 class EventModel {
   /*id INTEGER PRIMARY KEY AUTOINCREMENT, EventName TEXT,EventDesc TEXT, EventAddress TEXT, EventTime DATETIME, CreatedBy INTEGER,CreatedDate DATETIME*/
-  late int id;
+  int? id;
   late String EventName;
   late String EventAddress;
   late int EventTime;
@@ -8,7 +8,7 @@ class EventModel {
   late int CreatedDate;
   EventModel.empty();
   EventModel(
-      {required this.id,
+      {this.id,
       required this.EventName,
       required this.EventAddress,
       required this.EventTime,
