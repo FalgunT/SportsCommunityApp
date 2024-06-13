@@ -19,7 +19,7 @@ class dbScript {
         "CREATE TABLE $FriendsTable (id INTEGER PRIMARY KEY AUTOINCREMENT, UserID INTEGER, FriendUserID INTEGER, isInvited BOOLEAN, isAccepted INTEGER)");
 
     db.execute(
-        "CREATE TABLE $EventsTable (id INTEGER PRIMARY KEY AUTOINCREMENT, EventName TEXT,EventDesc TEXT, EventAddress TEXT, EventTime DATETIME, CreatedBy INTEGER,CreatedDate DATETIME)");
+        "CREATE TABLE $EventsTable (id INTEGER PRIMARY KEY AUTOINCREMENT, EventName TEXT,EventDesc TEXT, EventAddress TEXT, EventTime BIGINT, CreatedBy INTEGER,CreatedDate BIGINT)");
 
     //insert defaults
     //sports
@@ -79,6 +79,19 @@ class dbScript {
         "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 7,1,true,-1);");
     db.execute(
         "INSERT INTO  $FriendsTable (UserID,FriendUserID,isInvited,isAccepted) VALUES ( 10,1,true,-1);");
+
+    db.execute(
+        "INSERT INTO  $EventsTable (EventName,EventDesc,EventAddress,EventTime,CreatedBy,CreatedDate) "
+        "VALUES ( 'Football Practice','Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.'"
+        ",'15680 Christiane Trail, Kohlerside, MN 960023',1719233460000,1,1718283003502)");
+    db.execute(
+        "INSERT INTO  $EventsTable (EventName,EventDesc,EventAddress,EventTime,CreatedBy,CreatedDate) "
+        "VALUES ( 'Football Practice','Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.'"
+        ",'15680 Christiane Trail, Kohlerside, MN 960023',1719319860000,1,1718283003502)");
+    db.execute(
+        "INSERT INTO  $EventsTable (EventName,EventDesc,EventAddress,EventTime,CreatedBy,CreatedDate) "
+        "VALUES ( 'Football Practice','Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.'"
+        ",'15680 Christiane Trail, Kohlerside, MN 960023',1719406260000,1,1718283003502)");
 
     //creation of indexes
     //insert defaults

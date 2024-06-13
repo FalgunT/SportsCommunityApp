@@ -3,9 +3,9 @@ class EventModel {
   late int id;
   late String EventName;
   late String EventAddress;
-  late DateTime EventTime;
+  late int EventTime;
   late int CreatedBy; //user id will come here
-  late DateTime CreatedDate;
+  late int CreatedDate;
   EventModel.empty();
   EventModel(
       {required this.id,
