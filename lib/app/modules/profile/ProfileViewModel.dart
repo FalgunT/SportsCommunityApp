@@ -9,7 +9,6 @@ class ProfileViewModel extends BaseController {
   final UserRepository _repository = Get.find(tag: (UserRepository).toString());
 
   var user = UsersModel.empty().obs;
-
   var currentIndex = 0.obs;
 
   Future<void> getUser() async {

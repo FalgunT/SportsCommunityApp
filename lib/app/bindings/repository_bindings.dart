@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sportcommunityapp/app/data/repository/EventRepository.dart';
 import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
 
 import '../data/repository/FriendRepository.dart';
@@ -10,10 +11,13 @@ class RepositoryBindings implements Bindings {
       () => UserRepository(),
       tag: (UserRepository).toString(),
     );
-
     Get.lazyPut<FriendRepository>(
-          () => FriendRepository(),
+      () => FriendRepository(),
       tag: (FriendRepository).toString(),
+    );
+    Get.lazyPut<EventRepository>(
+      () => EventRepository(),
+      tag: (EventRepository).toString(),
     );
   }
 }

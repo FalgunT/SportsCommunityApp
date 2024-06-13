@@ -1,11 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sportcommunityapp/app/theme/ProjectTheme.dart';
 import 'package:sportcommunityapp/util/AppStrings.dart';
 
 import '../../core/BaseView.dart';
+import '../../routes/app_pages.dart';
 import 'HomeViewModel.dart';
 
 class HomeView extends BaseView<HomeViewModel> {
@@ -140,6 +143,9 @@ class HomeView extends BaseView<HomeViewModel> {
             //   children: [Icon(Icons.add), Text("Add Event")],
             // ),
 
-            onPressed: () {}));
+            onPressed: () {
+              //replace eventview here...
+              Get.toNamed(Routes.EVENT);
+            }));
   }
 }

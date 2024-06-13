@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:sportcommunityapp/app/modules/event/EventView.dart';
 import 'package:sportcommunityapp/app/modules/main/MainBinding.dart';
 import 'package:sportcommunityapp/app/modules/main/MainView.dart';
 import 'package:sportcommunityapp/app/modules/welcome/WelcomeBinding.dart';
 
+import '../modules/event/EventBinding.dart';
 import '../modules/home/HomeBinding.dart';
 import '../modules/home/HomeView.dart';
 import '../modules/welcome/WelcomeView.dart';
@@ -39,6 +41,11 @@ class AppPages {
       name: _Paths.OTHER,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVENT,
+      page: () => Eventview(),
+      binding: EventBinding(),
     ),
   ];
 }

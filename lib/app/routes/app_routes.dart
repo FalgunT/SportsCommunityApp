@@ -9,6 +9,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const STUDENTS = _Paths.STUDENTS;
   static const OTHER = _Paths.OTHER;
+  static const EVENT = _Paths.EVENT;
 }
 
 abstract class _Paths {
@@ -18,4 +19,5 @@ abstract class _Paths {
   static const PROFILE = '/teachers';
   static const STUDENTS = '/students';
   static const OTHER = '/other';
+  static const EVENT = '/events';
 }
