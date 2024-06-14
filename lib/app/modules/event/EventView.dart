@@ -150,6 +150,7 @@ class Eventview extends BaseView<EventViewModel> {
                     id: null,
                     EventName: controller.eventName.value.text,
                     EventAddress: controller.eventAddress.value.text,
+                    EventDesc: controller.eventDesc.value.text,
                     EventTime: eventDateTime.toInt(),
                     CreatedBy: Session.obj.user.id,
                     CreatedDate: currentdateTime.toInt(),

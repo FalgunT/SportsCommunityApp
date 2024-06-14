@@ -126,48 +126,46 @@ class HomeView extends BaseView<HomeViewModel> {
                 getUserImage(i, model),
                 Expanded(
                   flex: 2,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        ' ${model.Name}',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      Text(
-                        ' ${model.Age} years old ' /* \u2B24  ${model.Gender}*/,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: const Icon(
-                      Icons.cancel_rounded,
-                      size: 36,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ' ${model.Name}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          ' ${model.Age} years old ' /* \u2B24  ${model.Gender}*/,
+                          style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.white70),
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      controller.savePendingFriends(i, 0);
-                    },
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: const Icon(
-                      Icons.check_circle_rounded,
-                      size: 36,
-                    ),
-                    onPressed: () {
-                      controller.savePendingFriends(i, 1);
-                    },
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(
+                    Icons.cancel_rounded,
+                    size: 36,
                   ),
+                  onPressed: () {
+                    controller.savePendingFriends(i, 0);
+                  },
                 ),
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(
+                    Icons.check_circle_rounded,
+                    size: 36,
+                  ),
+                  onPressed: () {
+                    controller.savePendingFriends(i, 1);
+                  },
+                ),
+
               ],
             ),
           );
@@ -293,7 +291,7 @@ class HomeView extends BaseView<HomeViewModel> {
                               '${model.EventName}',
                               style: Theme.of(context)
                                   .textTheme
-                                  .titleLarge
+                                  .bodyLarge
                                   ?.copyWith(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600),
