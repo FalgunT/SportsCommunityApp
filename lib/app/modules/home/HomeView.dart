@@ -73,10 +73,7 @@ class HomeView extends BaseView<HomeViewModel> {
                         options: CarouselOptions(height: 360.0),
                         items: getEventView(),
                       )
-                    : CarouselSlider(
-                        options: CarouselOptions(height: 360.0),
-                        items: getDummyEventView(),
-                      ))
+                    : Center(),)
               ],
             ),
           ),
@@ -101,7 +98,11 @@ class HomeView extends BaseView<HomeViewModel> {
 
             onPressed: () {
               //replace eventview here...
-              Get.toNamed(Routes.EVENT);
+              Get.toNamed(Routes.EVENT)?.then((_) {
+                // Your callback here
+                controller.getPendingList();
+                controller.getUpcomingEvent();
+              });
             }));
   }
 
@@ -192,43 +193,6 @@ class HomeView extends BaseView<HomeViewModel> {
     }
   }
 
-  List<Widget> getDummyEventView() {
-    return [1, 2, 3, 4, 5].map((i) {
-      return Builder(
-        builder: (BuildContext context) {
-          return Card.filled(
-            elevation: 4,
-            child: Stack(
-
-                // margin: EdgeInsets.symmetric(horizontal: 5.0),
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      'assets/images/event${(i % 3) + 1}.jpg',
-                      height: 352,
-                      width: 352,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: 100,
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        height: 200,
-                        width: 100,
-                        color: Color(0xAF000000),
-                        child: Text('Position: $i'),
-                      ))
-                ]),
-          );
-        },
-      );
-    }).toList();
-  }
 
   List<Widget> getEventView() {
     List<Widget> widgets = [];
@@ -255,7 +219,7 @@ class HomeView extends BaseView<HomeViewModel> {
                       bottom: 0,
                       left: 0,
                       right: 0,
-                      height: 100,
+                      height: 80,
                       child: Container(
                         padding: EdgeInsets.all(8),
                         height: 200,

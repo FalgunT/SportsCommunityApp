@@ -10,7 +10,7 @@ class EventRepository {
 
   Future<List<EventModel>> getAllEvent() async {
     var dbClient = await dbHelper.db;
-    List<Map> maps = await dbClient.query(dbScript.EventsTable);
+    List<Map> maps = await dbClient.query(dbScript.EventsTable,orderBy: 'EventTime' );
     List<EventModel> student = [];
     for (int i = 0; i < maps.length; i++) {
       student.add(EventModel.fromMap(maps[i]));
