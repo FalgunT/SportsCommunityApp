@@ -2,11 +2,12 @@ import 'package:get/get.dart';
 import 'package:sportcommunityapp/app/data/repository/EventRepository.dart';
 import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
 
+import '../../util/Session.dart';
 import '../data/repository/FriendRepository.dart';
 
 class RepositoryBindings implements Bindings {
   @override
-  void dependencies() {
+  Future<void> dependencies() async {
     Get.lazyPut<UserRepository>(
       () => UserRepository(),
       tag: (UserRepository).toString(),
@@ -19,5 +20,7 @@ class RepositoryBindings implements Bindings {
       () => EventRepository(),
       tag: (EventRepository).toString(),
     );
+
+    await Session.obj.getUser();
   }
 }

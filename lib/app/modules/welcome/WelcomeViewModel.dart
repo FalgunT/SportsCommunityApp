@@ -18,17 +18,5 @@ class WelcomeViewModel extends BaseController {
         "there will be small description"),
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
-    getUser();
-  }
 
-  Future<void> getUser() async {
-    final UserRepository _repository =
-        Get.find(tag: (UserRepository).toString());
-    Session session = Session();
-    session.user = await _repository.getUserbyId(1);
-    debugPrint('User--->${session.user.Name}');
-  }
 }

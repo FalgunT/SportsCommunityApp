@@ -40,10 +40,10 @@ class HomeView extends BaseView<HomeViewModel> {
                     //Go to the next screen
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Obx(() => controller.pendingfriends.value.length > 0
+                Obx(() => controller.pendingfriends.isNotEmpty
                     ? Padding(
                         padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                         child: Text(
@@ -52,13 +52,13 @@ class HomeView extends BaseView<HomeViewModel> {
                         ),
                       )
                     : Center()),
-                Obx(() => controller.pendingfriends.value.length <= 0
+                Obx(() => controller.pendingfriends.isEmpty
                     ? Center()
                     : CarouselSlider(
                         options: CarouselOptions(height: 80.0),
                         items: getpendingWidget(),
                       )),
-                Obx(() => controller.upcomingEvents.value.length > 0
+                Obx(() => controller.upcomingEvents.isNotEmpty
                     ? Padding(
                         padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                         child: Text(
@@ -68,7 +68,7 @@ class HomeView extends BaseView<HomeViewModel> {
                       )
                     : Center()),
 
-                Obx(() => controller.upcomingEvents.value.length > 0
+                Obx(() => controller.upcomingEvents.isNotEmpty
                     ? CarouselSlider(
                         options: CarouselOptions(height: 360.0),
                         items: getEventView(),
@@ -84,12 +84,12 @@ class HomeView extends BaseView<HomeViewModel> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton.extended(
             backgroundColor: ProjectTheme.primaryColor,
-            label: Text(
+            label: const Text(
               "Add Event",
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
             ),
-            icon: Icon(
+            icon: const Icon(
               Icons.add,
               color: Colors.white,
             ),
@@ -107,8 +107,8 @@ class HomeView extends BaseView<HomeViewModel> {
 
   List<Widget> getpendingWidget() {
     List<Widget> widgets = [];
-    for (int i = 0; i < controller.pendingUfriends.value.length; i++) {
-      UsersModel model = controller.pendingUfriends.value[i];
+    for (int i = 0; i < controller.pendingUfriends.length; i++) {
+      UsersModel model = controller.pendingUfriends[i];
       widgets.add(Builder(
         builder: (BuildContext context) {
           return Card.filled(
@@ -232,8 +232,8 @@ class HomeView extends BaseView<HomeViewModel> {
 
   List<Widget> getEventView() {
     List<Widget> widgets = [];
-    for (int i = 0; i < controller.upcomingEvents.value.length; i++) {
-      EventModel model = controller.upcomingEvents.value[i];
+    for (int i = 0; i < controller.upcomingEvents.length; i++) {
+      EventModel model = controller.upcomingEvents[i];
       widgets.add(Builder(
         builder: (BuildContext context) {
           return Card.filled(

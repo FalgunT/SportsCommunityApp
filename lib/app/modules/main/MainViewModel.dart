@@ -12,6 +12,8 @@ import '../other/OtherView.dart';
 import '../profile/ProfileView.dart';
 
 class MainViewModel extends BaseController {
+  final UserRepository _repository =
+  Get.find(tag: (UserRepository).toString());
   var currentIndex = 0.obs;
   final widgetOptions = <Widget>[
     HomeView(),
@@ -24,7 +26,9 @@ class MainViewModel extends BaseController {
   @override
   void onInit() {
     super.onInit();
+    //Session.obj.getUser();
   }
+
 
 
 }
