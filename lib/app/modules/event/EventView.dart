@@ -142,13 +142,9 @@ class Eventview extends BaseView<EventViewModel> {
             Center(
               child: InkWell(
                 onTap: () async {
-                  var currentdateTime =
-                      DateTime.now().millisecondsSinceEpoch / 1000;
+                  var currentdateTime = DateTime.now().millisecondsSinceEpoch;
                   var eventDateTime =
                       controller.eventDate.value!.millisecondsSinceEpoch;
-
-                  // print(
-                  //     "eventDateTime $eventDateTime -- ${DateTime.fromMillisecondsSinceEpoch(eventDateTime)}");
 
                   EventModel eventData = EventModel(
                     id: null,
