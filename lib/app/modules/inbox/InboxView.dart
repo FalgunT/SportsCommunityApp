@@ -22,7 +22,13 @@ class InboxView extends BaseView<InboxViewModel> {
       width: double.maxFinite,
       height: double.maxFinite,
       decoration: ProjectTheme.getBoxDecoration(),
-      child: Center(),
+      child: Center(
+        child: Text("In Progress",
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(color: Colors.white)),
+      ),
     ));
   }
 }

@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Colors.transparent)),
+              borderSide: BorderSide(color: Colors.blueGrey)),
           hintText: hintText,
           label: Text(hintText),
           contentPadding:

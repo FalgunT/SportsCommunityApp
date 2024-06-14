@@ -63,7 +63,7 @@ class HomeView extends BaseView<HomeViewModel> {
                     ),
                   ),
 
-                /*  SearchBar(
+                  /*  SearchBar(
                     //padding: EdgeInsetsGeometry.lerp(a, b, t)
                     leading: const Padding(
                       padding: EdgeInsets.all(8.0),
@@ -77,46 +77,36 @@ class HomeView extends BaseView<HomeViewModel> {
                   const SizedBox(
                     height: 8,
                   ),
-                  Obx(() =>
-                  controller.pendingfriends.isNotEmpty
+                  Obx(() => controller.pendingfriends.isNotEmpty
                       ? Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                    child: Text(
-                      pendinginvite,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .titleMedium,
-                    ),
-                  )
+                          padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+                          child: Text(
+                            pendinginvite,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        )
                       : Center()),
-                  Obx(() =>
-                  controller.pendingfriends.isEmpty
+                  Obx(() => controller.pendingfriends.isEmpty
                       ? Center()
                       : CarouselSlider(
-                    options: CarouselOptions(height: 80.0),
-                    items: getpendingWidget(),
-                  )),
-                  Obx(() =>
-                  controller.upcomingEvents.isNotEmpty
+                          options: CarouselOptions(height: 80.0),
+                          items: getpendingWidget(),
+                        )),
+                  Obx(() => controller.upcomingEvents.isNotEmpty
                       ? Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                    child: Text(
-                      upcomingevent,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .titleMedium,
-                    ),
-                  )
+                          padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+                          child: Text(
+                            upcomingevent,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        )
                       : Center()),
                   Obx(
-                        () =>
-                    controller.upcomingEvents.isNotEmpty
+                    () => controller.upcomingEvents.isNotEmpty
                         ? CarouselSlider(
-                      options: CarouselOptions(height: 360.0),
-                      items: getEventView(),
-                    )
+                            options: CarouselOptions(height: 360.0),
+                            items: getEventView(),
+                          )
                         : Center(),
                   )
                 ],
@@ -130,7 +120,7 @@ class HomeView extends BaseView<HomeViewModel> {
             label: const Text(
               "Add Event",
               style:
-              TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
             ),
             icon: const Icon(
               Icons.add,
@@ -177,16 +167,11 @@ class HomeView extends BaseView<HomeViewModel> {
                       children: [
                         Text(
                           ' ${model.Name}',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .titleMedium,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          ' ${model
-                              .Age} years old ' /* \u2B24  ${model.Gender}*/,
-                          style: Theme
-                              .of(context)
+                          ' ${model.Age} years old ' /* \u2B24  ${model.Gender}*/,
+                          style: Theme.of(context)
                               .textTheme
                               .titleSmall
                               ?.copyWith(color: Colors.white70),
@@ -258,7 +243,7 @@ class HomeView extends BaseView<HomeViewModel> {
             elevation: 4,
             child: Stack(
 
-              // margin: EdgeInsets.symmetric(horizontal: 5.0),
+                // margin: EdgeInsets.symmetric(horizontal: 5.0),
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
@@ -290,37 +275,36 @@ class HomeView extends BaseView<HomeViewModel> {
                                   size: 12,
                                 ),
                                 Text(
-                                  '${DateFormat(' MMM dd : ').add_jm().format(
-                                      DateTime.fromMillisecondsSinceEpoch(
-                                          model.EventTime))}',
-                                  style: Theme
-                                      .of(context)
+                                  '${DateFormat(' MMM dd : ').add_jm().format(DateTime.fromMillisecondsSinceEpoch(model.EventTime))}',
+                                  style: Theme.of(context)
                                       .textTheme
                                       .titleSmall
                                       ?.copyWith(
-                                      color: Colors.white, fontSize: 12),
+                                          color: Colors.white, fontSize: 12),
                                 ),
                               ],
                             ),
                             Text(
                               '${model.EventName}',
-                              style: Theme
-                                  .of(context)
+                              style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
                                   ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
                             ),
                             Row(
                               children: [
-                                Text(
-                                  '${model.EventAddress}',
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(color: Colors.white),
+                                Flexible(
+                                  child: Text(
+                                    '${model.EventAddress}',
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(color: Colors.white),
+                                  ),
                                 ),
                               ],
                             )
@@ -335,6 +319,5 @@ class HomeView extends BaseView<HomeViewModel> {
     return widgets;
   }
 
-  void _handleSearch(String value) {
-  }
+  void _handleSearch(String value) {}
 }

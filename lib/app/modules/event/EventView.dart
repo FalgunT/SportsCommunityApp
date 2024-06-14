@@ -70,24 +70,79 @@ class Eventview extends BaseView<EventViewModel> {
                     SizedBox(
                       height: 24,
                     ),
-                    CustomTextField(
-                        controller: controller.eventDesc.value,
-                        hintText: "Event Description"),
+
+                    TextField(
+                      maxLines: 5,
+                      controller: controller.eventDesc.value,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                                //   color: Colors.transparent,
+                                ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  const BorderSide(color: Colors.blueGrey)),
+                          hintText: "Event Description",
+                          label: Text("Event Description"),
+                          alignLabelWithHint: true,
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          fillColor: Colors.black54,
+                          filled: true),
+                    ),
+                    // CustomTextField(
+                    //     controller: controller.eventDesc.value,
+                    //     hintText: "Event Description"),
                     SizedBox(
                       height: 24,
                     ),
-                    CustomTextField(
-                        controller: controller.eventAddress.value,
-                        hintText: "Event Address"),
+
+                    TextField(
+                      maxLines: 3,
+                      controller: controller.eventDesc.value,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                                //   color: Colors.transparent,
+                                ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  const BorderSide(color: Colors.blueGrey)),
+                          hintText: "Event Address",
+                          label: Text("Event Address"),
+                          floatingLabelAlignment: FloatingLabelAlignment.start,
+                          alignLabelWithHint: true,
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          fillColor: Colors.black54,
+                          filled: true),
+                    ),
                     SizedBox(
                       height: 24,
                     ),
-                   /* Padding(
+
+                    // CustomTextField(
+                    //     controller: controller.eventAddress.value,
+                    //     hintText: "Event Address"),
+                    // SizedBox(
+                    //   height: 24,
+                    // ),
+                    /* Padding(
                       padding: const EdgeInsets.fromLTRB(8.0,8,0,0),
                       child: const Text("Event Date",),
                     ),*/
                     Card.filled(
                       color: Colors.black54,
+                      borderOnForeground: true,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(color: Colors.blueGrey)),
                       elevation: 4,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -107,7 +162,8 @@ class Eventview extends BaseView<EventViewModel> {
                                       theme: picker.DatePickerTheme(
                                           cancelStyle: TextStyle(
                                               color: Colors.grey.shade500),
-                                          headerColor: ProjectTheme.onBackground,
+                                          headerColor:
+                                              ProjectTheme.onBackground,
                                           backgroundColor:
                                               ProjectTheme.onBackground,
                                           itemStyle: TextStyle(
@@ -116,7 +172,8 @@ class Eventview extends BaseView<EventViewModel> {
                                               fontSize: 18),
                                           doneStyle: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 16)), onChanged: (date) {
+                                              fontSize: 16)),
+                                      onChanged: (date) {
                                     print('change $date in time zone ' +
                                         date.timeZoneOffset.inHours.toString());
                                   }, onConfirm: (date) {
