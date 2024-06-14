@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sportcommunityapp/app/data/model/usermodel.dart';
 import 'package:sportcommunityapp/app/data/repository/UserRepository.dart';
+import 'package:sportcommunityapp/util/Session.dart';
 
 import '../../core/BaseController.dart';
 import '../../data/model/friendmodel.dart';
@@ -29,10 +30,23 @@ class OtherViewModel extends BaseController {
     friends.value = await _repository.getFriends();
     Ufriends.value = [];
     for (int i = 0; i < friends.value.length; i++) {
-      UsersModel model =
-          await _urepository.getUserbyId(friends.value[i].UserID);
-      Ufriends.value.add(model);
+      if (friends.value[i].UserID == Session.obj.user.id) {
+        UsersModel model =
+            await _urepository.getUserbyId(friends.value[i].FriendUserID);
+        Ufriends.value.add(model);
+      } else if (friends.value[i].FriendUserID == Session.obj.user.id) {
+        UsersModel model =
+            await _urepository.getUserbyId(friends.value[i].UserID);
+        Ufriends.value.add(model);
+      }
     }
+    Ufriends.sort(
+      (a, b) {
+        var aName = a.Name.toLowerCase();
+        var bName = b.Name.toLowerCase();
+        return aName.compareTo(bName);
+      },
+    );
   }
 
   Future<void> saveFriends(int pos, int val) async {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sportcommunityapp/app/data/model/usermodel.dart';
 import '../../core/BaseView.dart';
+import '../../theme/ProjectTheme.dart';
 import 'OtherViewModel.dart';
 
 //friends
@@ -15,11 +16,48 @@ class OtherView extends BaseView<OtherViewModel> {
 
   @override
   Widget body(BuildContext context) {
+    controller.getList();
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      body: Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          decoration: ProjectTheme.getBoxDecoration(),
+          child:Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            Card.filled(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+              elevation: 4,
+              color: ProjectTheme.primaryAccentColor,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SizedBox(
+                  height: 48,
+                  width: double.maxFinite,
+                  child: TextField(
+                    onChanged: _handleSearch,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      border: OutlineInputBorder(
+                        //borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide.none,
+                      ),
+                      hintText: "Search for Items",
+                      prefixIcon: const Icon(Icons.search),
+                      prefixIconColor: Colors.white70,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 16,
+            ),
             // Center(child: Text("Other")),
             Obx(() => controller.Ufriends.value.length <= 0
                 ? Center()
@@ -31,6 +69,7 @@ class OtherView extends BaseView<OtherViewModel> {
                           return Container(
                               height: 130,
                               child: Card.filled(
+                                color: ProjectTheme.primaryAccentColor,
                                 elevation: 4,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -122,13 +161,13 @@ class OtherView extends BaseView<OtherViewModel> {
                                                 ],
                                               ),
                                             ),
-                                            Row(
+                                            /*Row(
                                               children: [
                                                 Icon(Icons.phone,
                                                     size: 15,
                                                     color: Colors.white70),
                                                 Text(
-                                                  ' ${controller.Ufriends[i].ContactNo == "" ? '-' : controller.Ufriends[i].ContactNo}' /* \u2B24  ${model.Gender}*/,
+                                                  ' ${controller.Ufriends[i].ContactNo == "" ? '-' : controller.Ufriends[i].ContactNo}' *//* \u2B24  ${model.Gender}*//*,
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .titleSmall
@@ -137,7 +176,7 @@ class OtherView extends BaseView<OtherViewModel> {
                                                               Colors.white70),
                                                 ),
                                               ],
-                                            ),
+                                            ),*/
                                           ],
                                         ),
                                       ),
@@ -173,7 +212,7 @@ class OtherView extends BaseView<OtherViewModel> {
             //   )),
           ],
         ),
-      ),
+      )),
     );
   }
 
@@ -202,5 +241,8 @@ class OtherView extends BaseView<OtherViewModel> {
         ),
       );
     }
+  }
+
+  void _handleSearch(String value) {
   }
 }

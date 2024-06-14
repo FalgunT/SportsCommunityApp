@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+import '../theme/ProjectTheme.dart';
 import 'BaseController.dart';
 
 abstract class BaseView<Controller extends BaseController>
@@ -85,11 +86,11 @@ abstract class BaseView<Controller extends BaseController>
   }
 
   Color pageBackgroundColor() {
-    return Colors.black;
+    return   ProjectTheme.primaryColorTrans;
   }
 
   Color statusBarColor() {
-    return Colors.black;
+    return   ProjectTheme.primaryColorTrans;
   }
 
   Widget? floatingActionButton() {

@@ -14,7 +14,7 @@ class MainView extends BaseView<MainViewModel> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.black54,
+      backgroundColor: ProjectTheme.primaryColorTrans,
       leading: Image.asset(
         'assets/icons/ic_launcher.png',
         height: 72,
@@ -45,7 +45,7 @@ class MainView extends BaseView<MainViewModel> {
             controller.widgetOptions.elementAt(controller.currentIndex.value)),
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
-            backgroundColor: Colors.black54,
+            backgroundColor: ProjectTheme.primaryBottomColorTrans,
             unselectedItemColor: Colors.white,
             selectedItemColor: ProjectTheme.primaryColor,
             currentIndex: controller.currentIndex.value,

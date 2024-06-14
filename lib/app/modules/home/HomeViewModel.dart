@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sportcommunityapp/app/data/model/eventmodel.dart';
@@ -21,7 +22,10 @@ class HomeViewModel extends BaseController {
   RxList<FriendModel> pendingfriends = RxList.empty();
   RxList<UsersModel> pendingUfriends = RxList.empty();
   RxList<EventModel> upcomingEvents = RxList.empty();
+
   var currentIndex = 0.obs;
+  TextEditingController textsearchController = TextEditingController();
+
 
   @override
   void onInit() {

@@ -5,11 +5,11 @@ import 'package:sportcommunityapp/util/AppStrings.dart';
 
 import '../../core/BaseView.dart';
 import '../../core/paging_view.dart';
+import '../../theme/ProjectTheme.dart';
 import 'InboxViewModel.dart';
 import '../main/Listitem.dart';
 
 class InboxView extends BaseView<InboxViewModel> {
-
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return null;
@@ -17,8 +17,12 @@ class InboxView extends BaseView<InboxViewModel> {
 
   @override
   Widget body(BuildContext context) {
-    return const Scaffold(
-      body: Column(),
-    );
+    return Scaffold(
+        body: Container(
+      width: double.maxFinite,
+      height: double.maxFinite,
+      decoration: ProjectTheme.getBoxDecoration(),
+      child: Center(),
+    ));
   }
 }
