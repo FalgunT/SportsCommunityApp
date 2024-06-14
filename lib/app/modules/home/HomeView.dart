@@ -67,13 +67,7 @@ class HomeView extends BaseView<HomeViewModel> {
                         ),
                       )
                     : Center()),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
-                  child: Text(
-                    upcomingevent,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
+
                 Obx(() => controller.upcomingEvents.value.length > 0
                     ? CarouselSlider(
                         options: CarouselOptions(height: 360.0),
