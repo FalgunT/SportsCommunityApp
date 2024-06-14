@@ -1,14 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ProjectTheme {
   static Color primaryColor = const Color(0xff662E9A);
   static Color primaryColorTrans = const Color(0xff241a40);
   static Color primaryBottomColorTrans = const Color(0x87231034);
-  static Color primaryAccentColor = const Color(0xAf271F2D);
+  static Color primaryAccentColor = Colors.black54;
   static Color onBackground = const Color(0xff1E1E1E);
-  static List<Color> gradientBGColors= const [
+  static List<Color> gradientBGColors = const [
     Color(0xff241a40),
     Color(0xff1c1933),
     Color(0xff171625),
@@ -21,7 +22,7 @@ class ProjectTheme {
     Color(0xff231034),
   ];
 
-  static getBoxDecoration(){
+  static getBoxDecoration() {
     return BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,

@@ -45,7 +45,7 @@ class MainView extends BaseView<MainViewModel> {
             controller.widgetOptions.elementAt(controller.currentIndex.value)),
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
-            backgroundColor: ProjectTheme.primaryBottomColorTrans,
+            backgroundColor: ProjectTheme.primaryAccentColor,
             unselectedItemColor: Colors.white,
             selectedItemColor: ProjectTheme.primaryColor,
             currentIndex: controller.currentIndex.value,

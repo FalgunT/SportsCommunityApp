@@ -39,7 +39,7 @@ class ProfileView extends BaseView<ProfileViewModel> {
                   height: 10,
                 ),
                 Card(
-                  surfaceTintColor: Colors.grey.shade50,
+                  color: ProjectTheme.primaryAccentColor,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -121,7 +121,7 @@ class ProfileView extends BaseView<ProfileViewModel> {
                       height: 12,
                     ),
                     Card(
-                      surfaceTintColor: Colors.grey.shade50,
+                     color: ProjectTheme.primaryAccentColor,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -197,7 +197,7 @@ class ProfileView extends BaseView<ProfileViewModel> {
                       height: 12,
                     ),
                     Card(
-                      surfaceTintColor: Colors.grey.shade50,
+                      color: ProjectTheme.primaryAccentColor,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
