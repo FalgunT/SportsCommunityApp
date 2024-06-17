@@ -15,11 +15,38 @@ class MainView extends BaseView<MainViewModel> {
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
       backgroundColor: ProjectTheme.primaryColorTrans,
-      leading: Image.asset(
-        'assets/icons/ic_launcher.png',
-        height: 72,
-        width: 72,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 10,
+          width: 10,
+          padding: const EdgeInsets.all(0.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: Image.asset(
+            'assets/icons/ic_launcher.png',
+            fit: BoxFit.fill,
+            //   fit: BoxFit.fitHeight,
+            // height: 122,
+            // width: 122,
+          ),
+        ),
       ),
+
+      //  CircleAvatar(
+      //   backgroundColor: Colors.white,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(0.0),
+      //     child: Image.asset(
+      //       'assets/icons/ic_launcher.png',
+      //       fit: BoxFit.cover,
+      //       // height: 122,
+      //       // width: 122,
+      //     ),
+      //   ),
+      // ),
       title: Column(
         children: [
           RichText(

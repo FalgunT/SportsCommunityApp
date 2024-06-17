@@ -116,14 +116,15 @@ class WelcomeView extends BaseView<WelcomeViewModel> {
                                     borderRadius: BorderRadius.circular(30)),
                                 //  width: 200,
                                 height: 50,
-                                child: const Center(
-                                  child: Text(
-                                    "Get Started",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                child: Center(
+                                  child: Text("Get Started",
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge
+                                      // TextStyle(
+                                      //     fontSize: 20,
+                                      //     color: Colors.white,
+                                      //     fontWeight: FontWeight.bold),
+                                      ),
                                 ),
                               ),
                             ),

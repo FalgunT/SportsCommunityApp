@@ -1,16 +1,11 @@
 # sportcommunityapp
 
-A new Flutter project.
+A new Sports Community Application project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+This is a skleton app of sports community application. This application have following features: 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Manage Network: Keep track of pending invites and manage your friends list effortlessly.
+Discover and Join Events: Find local sports events and join activities that match your interests.
+Handle Friend Requests: Easily manage pending friend requests to expand your network.
+With an integrated SQLite database, SportsConnect ensures a smooth and organized user experience, keeping all your data easily accessible and well-managed.

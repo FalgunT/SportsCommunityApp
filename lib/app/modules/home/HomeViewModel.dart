@@ -26,7 +26,6 @@ class HomeViewModel extends BaseController {
   var currentIndex = 0.obs;
   TextEditingController textsearchController = TextEditingController();
 
-
   @override
   void onInit() {
     // TODO: implement onInit
@@ -44,6 +43,7 @@ class HomeViewModel extends BaseController {
           await _urepository.getUserbyId(pendingfriends.value[i].UserID);
       pendingUfriends.value.add(model);
     }
+    notifyChildrens();
   }
 
   Future<void> savePendingFriends(int pos, int val) async {

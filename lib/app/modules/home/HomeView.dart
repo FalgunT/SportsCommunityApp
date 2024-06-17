@@ -47,7 +47,7 @@ class HomeView extends BaseView<HomeViewModel> {
                         width: double.maxFinite,
                         child: TextField(
                           onChanged: _handleSearch,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             filled: true,
                             fillColor: Colors.transparent,
                             border: OutlineInputBorder(
@@ -117,25 +117,17 @@ class HomeView extends BaseView<HomeViewModel> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton.extended(
             backgroundColor: ProjectTheme.primaryColor,
-            label: const Text(
+            label: Text(
               "Add Event",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             icon: const Icon(
               Icons.add,
-              color: Colors.white,
             ),
             elevation: 10,
             isExtended: true,
-            // child: Row(
-            //   children: [Icon(Icons.add), Text("Add Event")],
-            // ),
-
             onPressed: () {
-              //replace eventview here...
               Get.toNamed(Routes.EVENT)?.then((_) {
-                // Your callback here
                 controller.getPendingList();
                 controller.getUpcomingEvent();
               });
@@ -290,8 +282,8 @@ class HomeView extends BaseView<HomeViewModel> {
                                   .textTheme
                                   .bodyLarge
                                   ?.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                    color: Colors.white,
+                                  ),
                             ),
                             Row(
                               children: [

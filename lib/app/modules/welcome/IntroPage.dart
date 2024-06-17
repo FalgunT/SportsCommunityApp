@@ -41,19 +41,24 @@ class _IntroPageState extends State<IntroPage> {
               children: [
                 Text(
                   widget.title,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: Colors.white),
                 ),
                 SizedBox(
                   height: 6,
                 ),
                 Text(widget.text,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Colors.white)),
+                // TextStyle(
+
+                //     fontSize: 14,
+                //     fontWeight: FontWeight.bold,
+                //     color: Colors.white)),
               ],
             ),
           ),

@@ -9,7 +9,8 @@ class FriendRepository {
 
   Future<List<FriendModel>> getFriends() async {
     var dbClient = await dbHelper.db;
-    List<Map> maps = await dbClient.query(dbScript.FriendsTable,where: "isAccepted=?",whereArgs: [1]);
+    List<Map> maps = await dbClient
+        .query(dbScript.FriendsTable, where: "isAccepted=?", whereArgs: [1]);
     List<FriendModel> student = [];
     for (int i = 0; i < maps.length; i++) {
       student.add(FriendModel.fromMap(maps[i]));
@@ -19,7 +20,8 @@ class FriendRepository {
 
   Future<List<FriendModel>> getPendingFriends(int uid) async {
     var dbClient = await dbHelper.db;
-    List<Map> maps = await dbClient.query(dbScript.FriendsTable,where: "isAccepted=? and FriendUserID=?",whereArgs: [-1,uid]);
+    List<Map> maps = await dbClient.query(dbScript.FriendsTable,
+        where: "isAccepted=? and FriendUserID=?", whereArgs: [-1, uid]);
     List<FriendModel> student = [];
     for (int i = 0; i < maps.length; i++) {
       student.add(FriendModel.fromMap(maps[i]));
